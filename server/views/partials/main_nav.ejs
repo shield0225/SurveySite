@@ -1,0 +1,59 @@
+<!-- Main Navigation -->
+<nav class="navbar navbar-expand-lg">
+  <a href="/" class="logo">
+    <img src="/Assets/images/logo2.png" alt="Logo" width="100" height="80">
+  </a>
+  <div class="container-fluid text-center">
+    <a class="navbar-brand" href="/"></a>
+    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <ul class="navbar-nav">
+
+        <% if(typeof firstName == 'string' && firstName) { %>
+          <li class="navbar-text"><i class="fas fa-lg fa-user"></i> Welcome, <%= firstName+' '+lastName %></li>
+          <li class="nav-item"><a href="/logout" class="nav-link">
+            <i class="fas fa-lg fa-sign-out-alt"></i> Logout</a></li>
+        <% } else { %>
+          <li class="nav-item"><a href="/login" class="nav-link">
+            <i class="fas fa-lg fa-sign-in-alt"></i> Login</a></li>
+        <% } %>
+
+        <% if (title === "Home" || title === "/") { %>
+          <li class="nav-item active">
+        <% } else { %>
+          <li class="nav-item">
+        <% } %>
+          <a class="nav-link" aria-current="page" href="/home"><i class="fa-solid fa-lg fa-house-user"></i> Home</a>
+        </li>
+
+        <li class="nav-item <%= title === 'About Me' ? 'active' : '' %>">
+          <a class="nav-link" aria-current="page" href="/aboutme"><i class="fa-solid fa-person-through-window"></i> About Me</a>
+        </li>
+
+        <li class="nav-item <%= title === 'Services' ? 'active' : '' %>">
+          <a class="nav-link" aria-current="page" href="/services"><i class="fa-solid fa-gears"></i> Services</a>
+        </li>
+
+        <li class="nav-item <%= title === 'Education' ? 'active' : '' %>">
+          <a class="nav-link" aria-current="page" href="/education"><i class="fa-solid fa-user-graduate"></i> Education</a>
+        </li>
+
+        <li class="nav-item <%= title === 'Projects' ? 'active' : '' %>">
+          <a class="nav-link" aria-current="page" href="/projects"><i class="fa-solid fa-hammer"></i> Projects</a>
+        </li>
+
+        <li class="nav-item <%= title === 'Contact Me' ? 'active' : '' %>">
+          <a class="nav-link" aria-current="page" href="/contact"><i class="fas fa-phone-alt"> </i> Contact Me</a>
+        </li>
+        
+        <li class="nav-item <%= title === 'Contacts' ? 'active' : '' %>">
+          <a class="nav-link" href="/contacts/list"><i class="fa-solid fa-address-book"></i> Business Contacts</a>
+        </li>
+
+      </ul>
+    </div>
+  </div>
+</nav>

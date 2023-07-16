@@ -1,0 +1,36 @@
+<%- include ('partials/header.ejs') %>
+<%- include ('partials/main_nav.ejs') %>
+  <!--Main Navigation-->
+ 
+<!-- work project section starts -->
+<section class="projects" id="projects">
+  <div class="image">
+    <img draggable="false" class="tilt" src="/Assets/images/project.png" alt="Project Image" style="width: 200px; height: auto">
+  </div> 
+  <div class="container">
+    <div class="row" id="projectContainer">
+
+      <div class="bar">
+        <div class="info">
+          <video id="myVideo" controls autoplay loop>
+            <source src="/Assets/images/gif.mp4" type="video/mp4">
+          </video>
+          <p>Personal Portfolio</p>
+          <p>Created my first Personal Portfolio using ExpressJS and NodeJS implementing the EJS templating engine and Express Routes, hosted via Heroku. </p>
+        </div>
+      </div> 
+        <div class="bar">
+            <div class="info">
+              <img draggable="false" class = "image" src="/Assets/images/payroll.png" margin-bottom: 20px alt="Payroll App"/>
+               <p><span>Lead designer and programmer for a C#-based simple payroll application connected to a SQL database.</span></p>
+            </div>
+        </div> 
+    </div> 
+  </div>
+  
+</section>
+
+  <!--Script section -->
+  <%- include ('partials/bottom_nav.ejs') %>
+
+  <%- include ('partials/footer.ejs') %>

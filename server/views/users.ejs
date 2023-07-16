@@ -1,0 +1,42 @@
+<%- include ('partials/header.ejs') %>
+<%- include ('partials/main_nav.ejs') %>
+
+  <!-- Main Content -->
+  <main class="container">
+        <div class="row">
+            <div class="offset-md-1 col-md-10">
+                <h1><%= title %></h1>
+                <br>
+                <table class="table table-bordered table-striped table-hover">
+                    <!-- Header Row-->
+                    <tr class="d-flex">
+                        <th class="text-center col-1">First Name</th>
+                        <th class="text-center col-1">Last Name</th>
+                        <th class="text-center col-3">Email</th>
+                        <th class="text-center col-1">Username</th>
+                        <th class="text-center col-1">Password</th>
+                        <th class="text-center col-3">Created</th>
+                        <th class="text-center col-3">Updated</th>
+                    </tr>
+
+                <!-- Repeatable Template Row -->
+
+                <% userList.forEach(user => { %>
+                    <tr class="d-flex">
+                        <td class="text-center col-1"><%= user.firstName %></td>
+                        <td class="text-center col-1"><%= user.lastName %></td>
+                        <td class="text-center col-3"><%= user.email %></td>
+                        <td class="text-center col-1"><%= user.username %></td>
+                        <td class="text-center col-1"><%= user.password %></td>
+                        <td class="text-center col-3"><%= user.created %></td>
+                        <td class="text-center col-3"><%= user.updated %></td>
+                    </tr>
+                    <% }) %>
+                </table>
+            </div>
+        </div>
+    </main>
+
+<%- include ('partials/bottom_nav.ejs') %>
+
+<%- include ('partials/footer.ejs') %>

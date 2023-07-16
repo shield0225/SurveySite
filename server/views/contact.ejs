@@ -1,0 +1,70 @@
+<%- include('partials/header.ejs') %>
+
+<%- include('partials/main_nav.ejs') %>
+<!-- Main Navigation -->
+
+<!-- Contact section starts -->
+<section class="contact" id="contact">
+  <div class="container">
+    <div class="content">
+      <div class="image-box">
+        <img draggable="false" class = "image" src="/Assets/images/contactme.png" alt="Contact Image" style="width: 200px; height: auto">
+        <div class="contact-info">
+          <p><strong>Name:</strong> Aileen Salcedo</p>
+          <p><strong>Email:</strong> shieldsalcedo@yahoo.com</p>
+          <p><strong>Phone:</strong> +1 647-897-8408</p>
+          <p><strong>Address:</strong> Scarborough City, Ontario</p>
+        </div>
+      </div>
+      <br>
+      <form id="contact-form">
+        <div class="form-group">
+          <h2> </h2>
+          <h2>I would love to hear from you!</h2>
+          <div class="field">
+            <input type="text" name="fname" placeholder="First Name" required>
+            <i class="fas fa-user"></i>
+          </div>
+          <div class="field">
+            <input type="text" name="lname" placeholder="Last Name" required>
+            <i class="fas fa-user"></i>
+          </div>
+          <div class="field">
+            <input type="text" name="email" placeholder="Email" required>
+            <i class="fas fa-envelope"></i>
+          </div>
+          <div class="field">
+            <input type="text" name="phone" placeholder="Phone" required>
+            <i class="fas fa-phone-alt"></i>
+          </div>
+          <div class="message">
+            <textarea placeholder="Message" name="message" required></textarea>
+            <i class="fas fa-comment-dots"></i>
+          </div>
+        </div>
+        <div class="button-area">
+          <button type="submit" id="submit" class="btn">
+            Submit <i class="fa fa-paper-plane"></i>
+          </button>
+        </div>
+
+      </form>
+    </div>
+  </div>
+</section>
+<!-- Contact section ends -->
+
+<!--Script section -->
+<!-- emailjs to mail contact form data -->
+<script>
+  let form = document.getElementsByTagName("form")[0];
+  form.addEventListener("submit", (e) => {
+    e.preventDefault();
+    alert("Form Submitted!");
+    window.location.href = '/';
+  });
+</script>
+
+<%- include('partials/bottom_nav.ejs') %>
+
+<%- include('partials/footer.ejs') %>

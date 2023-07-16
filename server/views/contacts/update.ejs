@@ -1,0 +1,36 @@
+<%- include ('../partials/header.ejs') %>
+<%- include ('../partials/main_nav.ejs') %>
+  
+<!-- Main Content -->
+<main class="container">
+  <br>
+    <div class="row">
+        <div class="offset-md-1 col-md-10">
+            <h1><%= title %></h1>
+            <br>
+            <form action="/contacts/<%= contact.id %>" method="POST" autocomplete="off">
+                <fieldset class="form-group">
+                    <label for="contactName">Contact Name</label>
+                    <input type="text" class="form-control" id="contactName" name="contactName" value="<%= contact.contactName %>">
+                </fieldset>
+                <fieldset class="form-group">
+                    <label for="contactNumber">Contact Number</label>
+                    <input type="text" class="form-control" id="contactNumber" name="contactNumber" value="<%= contact.contactNumber %>">
+                </fieldset>
+                <fieldset class="form-group">
+                    <label for="email">Email Address</label>
+                    <input type="email" class="form-control" id="email" name="email" value="<%= contact.email %>">
+                </dfieldsetiv>
+                <br>
+                <button type="submit" class="btn btn-dark"><i class="fa-regular fa-floppy-disk"></i> </button>   
+                <a href="/contacts/delete/<%= contact._id %>" class="btn btn-danger"><i class="fa fa-trash-alt"></i> </a>
+                <a href="/contacts/list" class="btn btn-secondary"> Cancel </a>
+            </form>
+        </div>
+    </div>
+</main>
+
+
+<%- include ('../partials/bottom_nav.ejs') %>
+
+<%- include ('../partials/footer.ejs') %>
