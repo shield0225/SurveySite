@@ -114,7 +114,7 @@ app.use('/users', usersRouter);
 app.use('/survey', surveyRouter);
 
 app.post ("/login", passport.authenticate('local', {
-  successRedirect: "/survey/active-surveys",
+  successRedirect: "/active-surveys",
   failureRedirect: "/login",
 }));
 

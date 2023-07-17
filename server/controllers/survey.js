@@ -212,9 +212,6 @@ module.exports.processCreateResponses = (req, res, next) => {
   });
 };
 
-
-
-
 module.exports.displayMyStatPage = (req, res, next) => {
   let id = req.params.id;
 
@@ -235,7 +232,6 @@ module.exports.displayMyStatPage = (req, res, next) => {
   });
 };
 
-
 module.exports.displayMyResponsePage = (req, res, next) => {
   let id = req.params.id;
 
@@ -255,50 +251,3 @@ module.exports.displayMyResponsePage = (req, res, next) => {
     }
   });
 };
-
-//register user
-module.exports.processRegisterPage = (req, res, next) => {
-  // instantiate a user object
-  let newUser = new User({
-      username: req.body.username,
-      //password: req.body.password
-      email: req.body.email,
-      firstName: req.body.firstName,
-      lastName: req.body.lastName
-  });
-
-  User.register(newUser, req.body.password,(err) => {
-      if(err)
-      {
-          console.log("Error: Inserting New User");
-          if(err.name =="UserExistsError")
-          {
-              req.flash(
-                  'registerMessage',
-                  'Registration Error: User Already Exists!'
-              );
-              console.log('Error: User Already Exists!')
-          }
-          return res.render('auth/register',
-          {
-              title: 'Register',
-              messages: req.flash('registerMessage'),
-              firstName: req.user ? req.user.firstName : '',
-              lastName: req.user ? req.user.lastName : '',
-          });
-      }
-      else
-      {
-          // if no error exists, then registration is successful
-
-          /* TODO - Getting Ready to convert to API
-          // redirect the user and authenticate them
-          res.json({success: true, msg: 'User Registered Successfully!'});
-          */
-
-          return passport.authenticate('local')(req, res, () => {
-              res.redirect('/contacts/list')
-          });
-      }
-  });
-}
