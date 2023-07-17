@@ -1,0 +1,49 @@
+<%- include ('../partials/header.ejs') %>
+<%- include ('../partials/main_nav.ejs') %>
+
+  <!--Main Navigation-->
+<!-- about section starts -->
+
+<!-- Active Surveys Section -->
+<main>
+    <table class="active-surveys">
+        <thead>
+            <tr>
+                <th>Author</th>
+                <th>Survey Name</th>
+                <th>Start Date</th>
+                <th>Closing Date</th>
+                <th>View Questions</th>
+                <th></th>
+                <th><a href="create-survey"><button class="survey-button"><i class="fa-solid fa-plus"></i> Add</button></a></th>
+            </tr>
+        </thead>
+
+        <tbody>
+        <% for(let count = 0; count < surveyList.length; count++) { %>
+            <tr>
+                <td><%= surveyList[count].author %></td>
+                <td><%= surveyList[count].surveyName %></td>
+                <td><%= surveyList[count].startDate %></td>
+                <td><%= surveyList[count].closeDate %></td>
+                <td><a class="survey-button" href="<%= surveyList[count]._id %>">View</a></td>
+                <td>
+                    <a class="survey-button" href="edit/<%= surveyList[count]._id %>"><button class="survey-button"><i class="fa-solid fa-pencil"></i></button></a>
+                   
+                </td>
+                <td>
+
+                    <a class="survey-button" href="delete/<%= surveyList[count]._id %>"><button class="survey-button"><i class="fa-solid fa-trash"></i></button></a>
+                </td>
+            </tr>
+        <% } %>
+        </tbody>
+
+    </table>
+</main>
+
+<!-- about section ends -->
+
+  <!--Script section -->
+<%- include ('../partials/bottom_nav.ejs') %>
+<%- include ('../partials/footer.ejs') %>

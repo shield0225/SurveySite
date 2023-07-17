@@ -5,7 +5,7 @@
  */
 
 let app = require('./server/config/app');
-let debug = require('debug')('comp229_express_authentication:server');
+let debug = require('debug')('comp229_surveysite:server');
 let http = require('http');
 //let passport = require('./server/config/passport');
 
@@ -13,7 +13,7 @@ let http = require('http');
  * Get port from environment and store in Express.
  */
 
-let port = normalizePort(process.env.PORT || '3002');
+let port = normalizePort(process.env.PORT || '3005');
 app.set('port', port);
 
 /**

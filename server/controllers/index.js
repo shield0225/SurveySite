@@ -1,7 +1,7 @@
 // Author: Aileen Salcedo ->
 // Student ID: 301308843 ->
 // COMP229 - Web Application Development ->
-// Express Authentication ->
+// First Release - Survey Site ->
 
 let express = require('express');
 let router = express.Router();
@@ -21,23 +21,7 @@ module.exports.displayHomePage = (req, res, next) => {
 }
 
 module.exports.displayAboutPage = (req, res, next) => {
-    res.render('aboutme', {title: 'About', firstName: req.user ? req.user.firstName : ''});
-}
-
-module.exports.displayServicesPage = (req, res, next) => {
-    res.render('services', {title: 'Services', firstName: req.user ? req.user.firstName : ''});
-}
-
-module.exports.displayEducationPage = (req, res, next) => {
-    res.render('education', {title: 'Education', firstName: req.user ? req.user.firstName : ''});
-}
-
-module.exports.displayProjectsPage = (req, res, next) => {
-    res.render('projects', {title: 'Projects', firstName: req.user ? req.user.firstName : ''});
-}
-
-module.exports.displayContactMePage = (req, res, next) => {
-    res.render('contact', {title: 'Contact Me', firstName: req.user ? req.user.firstName : ''});
+    res.render('about', {title: 'About', firstName: req.user ? req.user.firstName : ''});
 }
 
 module.exports.displayLoginPage = (req, res, next) => {
@@ -53,7 +37,7 @@ module.exports.displayLoginPage = (req, res, next) => {
     }
     else
     {
-        return res.redirect('contacts/list');
+        return res.redirect('/active-surveys');
     }   
 }
 
@@ -113,7 +97,7 @@ module.exports.displayRegisterPage = (req, res, next) => {
         res.render('auth/register',
         {
             title: 'Register',
-            messages: req.flash('registerMessage'),
+            message: req.flash('registerMessage'),
             firstName: req.user ? req.user.firstName : '',
             lastName: req.user ? req.user.lastName : ''
         });
@@ -164,7 +148,7 @@ module.exports.processRegisterPage = (req, res, next) => {
             */
 
             return passport.authenticate('local')(req, res, () => {
-                res.redirect('/contacts/list')
+                res.redirect('/survey/active-surveys')
             });
         }
     });

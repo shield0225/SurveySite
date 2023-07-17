@@ -1,7 +1,7 @@
 // Author: Aileen Salcedo ->
 // Student ID: 301308843 ->
 // COMP229 - Web Application Development ->
-// Express Authentication ->
+// First Release - Survey Site ->
 
 module.exports= 
 {

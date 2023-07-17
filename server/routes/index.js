@@ -1,7 +1,7 @@
 // Author: Aileen Salcedo ->
 // Student ID: 301308843 ->
 // COMP229 - Web Application Development ->
-// Express Authentication ->
+// First Release - Survey Site ->
 
 let express = require('express');
 let router = express.Router();
@@ -15,19 +15,7 @@ router.get('/', indexController.displayHomePage);
 router.get('/home', indexController.displayHomePage);
 
 /* GET About Me page. */
-router.get('/aboutme', indexController.displayAboutPage);
-
-/* GET Projects page. */
-router.get('/projects', indexController.displayProjectsPage);
-
-/* GET Services page. */
-router.get('/services', indexController.displayServicesPage);
-
-/* GET Education page. */
-router.get('/education', indexController.displayEducationPage);
-
-/* GET Contact Me page. */
-router.get('/contact', indexController.displayContactMePage);
+//router.get('/about', indexController.displayAboutPage);
 
 /* GET Route for the User List page - READ Operation */
 router.get('/users', indexController.displayUsersPage);
@@ -46,8 +34,6 @@ router.post('/register', indexController.processRegisterPage);
 
 /* GET Route to perform UserLogout */
 router.get('/logout', indexController.performLogout);
-
-
 
 
 module.exports = router;

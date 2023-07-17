@@ -1,7 +1,7 @@
 // Author: Aileen Salcedo ->
 // Student ID: 301308843 ->
 // COMP229 - Web Application Development ->
-// Express Authentication ->
+// First Release - Survey Site ->
 
 //installed 3rd party packages
 let createError = require('http-errors');
@@ -44,9 +44,9 @@ let DB = require('./db');
       console.log('MongoDB Reconnected ...');
     });
 
-let indexRouter = require('../routes/index');
-let usersRouter = require('../routes/index');
-let contactsRouter = require('../routes/contacts');
+let surveyRouter = require('../routes/survey.js');
+let indexRouter = require('../routes/index.js');
+let usersRouter = require('../routes/index.js');
 
 let app = express();
 
@@ -111,10 +111,10 @@ app.use((req, res, next) => {
 // routing
 app.use('/', indexRouter);
 app.use('/users', usersRouter);
-app.use('/contacts', contactsRouter);
+app.use('/survey', surveyRouter);
 
 app.post ("/login", passport.authenticate('local', {
-  successRedirect: "/contacts/list",
+  successRedirect: "/survey/active-surveys",
   failureRedirect: "/login",
 }));
 
