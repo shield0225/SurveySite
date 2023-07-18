@@ -44,9 +44,9 @@ let DB = require('./db');
       console.log('MongoDB Reconnected ...');
     });
 
-let surveyRouter = require('../routes/survey.js');
-let indexRouter = require('../routes/index.js');
-let usersRouter = require('../routes/index.js');
+let indexRouter = require('../routes/index');
+let usersRouter = require('../routes/index');
+let surveyRouter = require('../routes/survey');
 
 let app = express();
 
@@ -104,7 +104,6 @@ app.use((req, res, next) => {
     res.locals.firstName = req.session.passport.user.firstName;
     res.locals.lastName = req.session.passport.user.lastName;
   }
-
   return next();
 });
 
@@ -114,7 +113,7 @@ app.use('/users', usersRouter);
 app.use('/survey', surveyRouter);
 
 app.post ("/login", passport.authenticate('local', {
-  successRedirect: "/active-surveys",
+  successRedirect: "/survey/active_surveys",
   failureRedirect: "/login",
 }));
 

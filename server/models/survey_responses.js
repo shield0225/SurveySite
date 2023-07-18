@@ -1,3 +1,8 @@
+// Author: Aileen Salcedo ->
+// Student ID: 301308843 ->
+// COMP229 - Web Application Development ->
+// First Release - Survey Site ->
+
 let mongoose = require("mongoose");
 
 

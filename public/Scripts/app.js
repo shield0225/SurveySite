@@ -13,7 +13,7 @@
                     if(!confirm("Are you sure?"))
                     {
                         event.preventDefault();
-                        window.location.assign('/contacts/list');
+                        window.location.assign('/survey/active_surveys');
                     }
                 })
             }

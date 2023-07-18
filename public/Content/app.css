@@ -1,7 +1,9 @@
 /*File name: Assignment2
 Student’s Name: Aileen Salcedo
 StudentID: 301308843
-Date: July 12, 2023 */
+// COMP229 - Web Application Development ->
+// First Release - Survey Site ->
+
 /* custom css goes here */
 
 body {
@@ -45,15 +47,6 @@ body {
 .nav-link:focus {
   color: rgb(174, 65, 112); /* Adjust the color as needed */
   text-decoration: none;
-}
-
-.navbar-left {
-  flex: 0 0 auto;
-}
-
-.navbar-middle {
-  flex: 1 1 auto;
-  text-align: center;
 }
 
 .navbar-right {

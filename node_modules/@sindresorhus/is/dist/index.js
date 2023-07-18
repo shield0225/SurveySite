@@ -126,6 +126,8 @@ is.undefined = isOfType('undefined');
 is.string = isOfType('string');
 const isNumberType = isOfType('number');
 is.number = (value) => isNumberType(value) && !is.nan(value);
+is.positiveNumber = (value) => is.number(value) && value > 0;
+is.negativeNumber = (value) => is.number(value) && value < 0;
 is.bigint = isOfType('bigint');
 // eslint-disable-next-line @typescript-eslint/ban-types
 is.function_ = isOfType('function');
@@ -320,6 +322,8 @@ export const assert = {
     undefined: (value) => assertType(is.undefined(value), 'undefined', value),
     string: (value) => assertType(is.string(value), 'string', value),
     number: (value) => assertType(is.number(value), 'number', value),
+    positiveNumber: (value) => assertType(is.positiveNumber(value), "positive number" /* AssertionTypeDescription.positiveNumber */, value),
+    negativeNumber: (value) => assertType(is.negativeNumber(value), "negative number" /* AssertionTypeDescription.negativeNumber */, value),
     bigint: (value) => assertType(is.bigint(value), 'bigint', value),
     // eslint-disable-next-line @typescript-eslint/ban-types
     function_: (value) => assertType(is.function_(value), 'Function', value),
