@@ -41,52 +41,52 @@ module.exports.displayLoginPage = (req, res, next) => {
     }   
 }
 
-module.exports.processLoginPage = (req, res, next) => {
-        passport.authenticate("local", (err, user, info) => {
-          // Server Error
-          if (err) {
-            return next(err);
-          }
-          // Details error
-          if (!user) {
-            return res.status(404).json({
-              success: false,
-              message: "The username or password is incorrect!",
-            });
-          }
-          req.login(user, (err) => {
-            // Server Error
-            if (err) {
-              return next(err);
-            }
+// module.exports.processLoginPage = (req, res, next) => {
+//         passport.authenticate("local", (err, user, info) => {
+//           // Server Error
+//           if (err) {
+//             return next(err);
+//           }
+//           // Details error
+//           if (!user) {
+//             return res.status(404).json({
+//               success: false,
+//               message: "The username or password is incorrect!",
+//             });
+//           }
+//           req.login(user, (err) => {
+//             // Server Error
+//             if (err) {
+//               return next(err);
+//             }
       
-            const payload = {
-              id: user._id,
-              firstName: user.firstName,
-              username: user.username,
-              email: user.email,
-            };
+//             const payload = {
+//               id: user._id,
+//               firstName: user.firstName,
+//               username: user.username,
+//               email: user.email,
+//             };
       
-            console.log(payload);
+//             console.log(payload);
       
-            const authToken = jwt.sign(payload, DB.Secret, {
-              expiresIn: 604800, // 1 week
-            });
+//             const authToken = jwt.sign(payload, DB.Secret, {
+//               expiresIn: 604800, // 1 week
+//             });
       
-            return res.json({
-              success: true,
-              message: "User Logged in Successfully!",
-              user: {
-                id: user._id,
-                displayName: user.displayName,
-                username: user.username,
-                email: user.email,
-              },
-              token: authToken,
-            });
-          });
-        })(req, res, next);
-      };
+//             return res.json({
+//               success: true,
+//               message: "User Logged in Successfully!",
+//               user: {
+//                 id: user._id,
+//                 displayName: user.displayName,
+//                 username: user.username,
+//                 email: user.email,
+//               },
+//               token: authToken,
+//             });
+//           });
+//         })(req, res, next);
+//       };
 
 module.exports.displayRegisterPage = (req, res, next) => {
     // check if the user is not already logged in

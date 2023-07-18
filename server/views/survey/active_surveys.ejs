@@ -5,41 +5,42 @@
 <!-- about section starts -->
 
 <!-- Active Surveys Section -->
-<main>
-    <table class="active-surveys">
-        <thead>
-            <tr>
-                <th>Author</th>
-                <th>Survey Name</th>
-                <th>Start Date</th>
-                <th>Closing Date</th>
-                <th>View Questions</th>
-                <th></th>
-                <th><a href="create-survey"><button class="survey-button"><i class="fa-solid fa-plus"></i> Add</button></a></th>
-            </tr>
-        </thead>
+<main class="container">
+    <div class="offset-md-1 col-md-10">
+        <br>
+        <h1><%= title %></h1>
+        <br>
+        <table class="active-surveys">
+            <thead>
+                <tr>
+                    <th class="col-2">Author</th>
+                    <th class="col-3">Survey Name</th>
+                    <th class="col-2">Start Date</th>
+                    <th class="col-2">Closing Date</th>
+                    <th class="text-center col-1"> View Questions </th>
+                    <th class="text-center col-3"> Actions </th>
+                        
+                </tr>
+            </thead>
 
-        <tbody>
-        <% for(let count = 0; count < surveyList.length; count++) { %>
-            <tr>
-                <td><%= surveyList[count].author %></td>
-                <td><%= surveyList[count].surveyName %></td>
-                <td><%= surveyList[count].startDate %></td>
-                <td><%= surveyList[count].closeDate %></td>
-                <td><a class="survey-button" href="<%= surveyList[count]._id %>">View</a></td>
-                <td>
-                    <a class="survey-button" href="edit/<%= surveyList[count]._id %>"><button class="survey-button"><i class="fa-solid fa-pencil"></i></button></a>
-                   
-                </td>
-                <td>
+            <tbody>
+            <% for(let count = 0; count < surveyList.length; count++) { %>
+                <tr>
+                    <td class="col-2"><%= surveyList[count].author %></td>
+                    <td class="col-3"><%= surveyList[count].surveyName %></td>
+                    <td class="col-2"><%= surveyList[count].startDate %></td>
+                    <td class="col-2"><%= surveyList[count].closeDate %></td>
+                    <td class="text-center col-1"><a class="survey-button" href="<%= surveyList[count]._id %>">View</a></td>
+                    <td class="text-center col-3">
+                        <a class="survey-button" href="edit/<%= surveyList[count]._id %>"><button class="btn btn-light btn-sm"><i class="fa-solid fa-pencil"></i></button></a>
+                        <a class="survey-button" href="delete/<%= surveyList[count]._id %>"><button class="btn btn-danger btn-sm"><i class="fa-solid fa-trash"></i></button></a>
+                    </td>
+                </tr>
+            <% } %>
+            </tbody>
 
-                    <a class="survey-button" href="delete/<%= surveyList[count]._id %>"><button class="survey-button"><i class="fa-solid fa-trash"></i></button></a>
-                </td>
-            </tr>
-        <% } %>
-        </tbody>
-
-    </table>
+        </table>
+    </div>
 </main>
 
 <!-- about section ends -->

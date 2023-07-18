@@ -24,7 +24,7 @@ router.get('/users', indexController.displayUsersPage);
 router.get('/login', indexController.displayLoginPage);
 
 /* POST Route for processing the Login page */
-// router.post('/login', indexController.processLoginPage);
+//router.post('/login', indexController.processLoginPage);
 
 /* GET Route for displaying the Register page */
 router.get('/register', indexController.displayRegisterPage);

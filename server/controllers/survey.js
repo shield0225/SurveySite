@@ -13,7 +13,7 @@ let Survey = require('../models/survey');
 module.exports.displayActiveSurveysPage = (req, res, next) => {
   Survey.find().sort({ surveyName: 1 }).exec()
       .then((surveyList) => {
-        res.render('survey/active-surveys', { title: 'Active Surveys', surveyList });
+        res.render('survey/active_surveys', { title: 'Active Surveys', surveyList });
       })
       .catch((err) => {
         console.error(err);

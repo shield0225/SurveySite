@@ -4,23 +4,34 @@
     <img class="logo" src="/Assets/images/logo.png" alt="Logo" width="80" height="60">
   </div>
 
-    <div class="navbar-right">
-      <div class="collapse navbar-collapse" id="navbarSupportedContent">
-        <li class="nav-item <%= title === 'Active Surveys' ? 'active' : '' %>">
-          <a class="nav-link" aria-current="page" href="/survey/active_surveys">
-            <button class="button"> Active Surveys </button>
-          </a>
-        </li>
+  <div class="container-fluid text-center">
+    <a class="navbar-brand" href="/"></a>
+    <button class="navbar-toggler" type="button">
+      <span class="navbar-toggler-icon"></span>
+    </button>
 
-        <% if (title === "Home" || title === "/") { %>
-          <li class="nav-item active">
-        <% } else { %>
-          <li class="nav-item">
-        <% } %>
-          <a class="nav-link" aria-current="page" href="/home"><i class="fa-solid fa-house-fire"></i> Home </a>
-        </li>
-
+      <div class="navbar-right" id="navbarSupportedContent">
         <ul class="navbar-nav">
+          <% if (title === "Active Surveys" || title === "/") { %>
+            <a href="create-survey">
+              <button class='glowing-btn'><span class='glowing-txt'>C<span class='faulty-letter'>R</span>EAT<span class='faulty-letter'>E</span></span></button>
+            </a>
+            <% } else { %>
+          <li class="nav-item <%= title === 'Active Surveys' ? 'active' : '' %>">
+            <a class="nav-link" aria-current="page" href="/survey/active_surveys">
+              <button class="button"> Active Surveys </button>
+            </a>
+            <% } %>
+          </li>
+
+          <% if (title === "Home" || title === "/") { %>
+            <li class="nav-item active">
+          <% } else { %>
+            <li class="nav-item">
+          <% } %>
+            <a class="nav-link" aria-current="page" href="/home"><i class="fa-solid fa-house-fire"></i> Home </a>
+          </li>
+
           <% if(typeof firstName == 'string' && firstName) { %>
             <li class="navbar-text"><i class="fas fa-lg fa-user"></i> Welcome, <%= firstName+' '+lastName %></li>
             <li class="nav-item"><a href="/logout" class="nav-link">
@@ -31,6 +42,5 @@
           <% } %>
         </ul> 
       </div>
-    </div>
   </div>
 </nav>

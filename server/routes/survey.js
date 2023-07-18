@@ -3,12 +3,15 @@
 // COMP229 - Web Application Development ->
 // First Release - Survey Site ->
 
-let express = require("express");
+let express = require('express');
 let router = express.Router();
+let mongoose = require('mongoose');
 
-let passport = require("passport");
-let jwt = require('jsonwebtoken');
-let surveyController = require('../controllers/survey');
+let passport = require('passport');
+//let jwt = require('jsonwebtoken');
+
+// connect to Contacts Model
+let Survey = require('../models/survey');
 
 // helper function for guard purposes
 function requireAuth(req, res, next)
@@ -21,7 +24,9 @@ function requireAuth(req, res, next)
   return next();
 }
 
+let surveyController = require('../controllers/survey');
+
 // GET Route for the Survey List page - READ OPERATION
-router.get("/", surveyController.displayActiveSurveysPage);
+router.get("/active_surveys", surveyController.displayActiveSurveysPage);
 
 module.exports = router;
