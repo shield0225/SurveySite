@@ -421,7 +421,8 @@ body {
   width: 90%;
   height: 70%;
   overflow: auto;
-  padding:50px 80px;
+  padding:20px 80px;
+  background-color: black;
 }
 
 .create-box{
@@ -464,7 +465,7 @@ body {
 
 .alert-message {
   animation-name: fadeOut;
-  animation-duration: 5s; /* Duration should match the desired delay */
+  animation-duration: 10s; /* Duration should match the desired delay */
   animation-fill-mode: forwards;
 }
 
@@ -481,7 +482,21 @@ body {
   border-collapse: collapse;
   border: 1px solid white;
 }
-.th, .td {
-  border: 1px solid white;
+.th  {
+  border-bottom: 2px solid rgb(72, 72, 72);
   padding: 8px;
+  font-size: large;
+  color: rgb(174, 65, 112);
+}
+
+.td {
+  border-bottom: 2px solid rgb(72, 72, 72);
+  padding: 8px;
+}
+
+.fixed-header {
+  position: sticky;
+  top: 0;
+  z-index: 1;
+  background-color: black;
 }
