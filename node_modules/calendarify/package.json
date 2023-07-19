@@ -1,0 +1,60 @@
+{
+  "name": "calendarify",
+  "private": false,
+  "version": "2.0.3",
+  "type": "module",
+  "files": [
+    "dist/*.css",
+    "dist/*.js",
+    "dist/*.ts"
+  ],
+  "main": "./dist/calendarify.umd.cjs",
+  "module": "./dist/calendarify.js",
+  "types": "./dist/main.d.ts",
+  "exports": {
+    ".": {
+      "import": "./dist/calendarify.js",
+      "require": "./dist/calendarify.umd.cjs"
+    },
+    "./dist/calendarify.min.css": {
+      "import": "./dist/calendarify.min.css"
+    }
+  },
+  "style": "./dist/calendarify.min.css",
+  "browserslist": [
+    "last 2 versions"
+  ],
+  "scripts": {
+    "dev": "vite",
+    "build": "vite build",
+    "lint": "tsc",
+    "preview": "vite preview"
+  },
+  "devDependencies": {
+    "@types/node": "^18.13.0",
+    "autoprefixer": "^10.4.13",
+    "sass": "^1.58.0",
+    "typescript": "^4.9.3",
+    "vite": "^4.1.0",
+    "vite-plugin-dts": "^1.7.2"
+  },
+  "dependencies": {
+    "@floating-ui/dom": "^1.2.1",
+    "moment": "^2.29.4"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/mohamadadithya/calendarify"
+  },
+  "keywords": [
+    "datepicker",
+    "calendar",
+    "calendarify"
+  ],
+  "author": "Mohamad Adithya",
+  "bugs": {
+    "url": "https://github.com/mohamadadithya/calendarify/issues"
+  },
+  "homepage": "https://github.com/mohamadadithya/calendarify#readme",
+  "license": "MIT"
+}

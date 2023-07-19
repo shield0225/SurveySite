@@ -27,6 +27,21 @@ function requireAuth(req, res, next)
 let surveyController = require('../controllers/survey');
 
 // GET Route for the Survey List page - READ OPERATION
-router.get("/active_surveys", surveyController.displayActiveSurveysPage);
+router.get('/active_surveys', requireAuth, surveyController.displayActiveSurveysPage);
+
+/* GET Route for displaying the Register page */
+router.get('/create', requireAuth, surveyController.displayCreateSurveyPage);
+
+/* Post Route for Create survey page. */
+router.post('/create', requireAuth, surveyController.processCreateSurveyPage);
+
+// GET Route for Update survey page - UPDATE Operation */
+router.get('/update/:id', requireAuth, surveyController.displayEditSurveyPage);
+
+// Post Route for Update survey page - UPDATE Operation */
+router.post('/update/:id', requireAuth, surveyController.processEditSurveyPage);
+
+// GET Route to perform Deletion - DELETE Operation */ 
+router.get('/delete/:id', requireAuth, surveyController.deleteSurveyPage);
 
 module.exports = router;

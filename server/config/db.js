@@ -6,6 +6,6 @@
 module.exports= 
 {
     "URI": "mongodb+srv://shield:Password100@clustershield.em0gaeb.mongodb.net/comp229_database?retryWrites=true&w=majority",
-   //"URI": "mongodb://localhost/users"
+   //"URI": "mongodb://localhost:27017/comp229_database",
    "Secret": 'SomeSecret'
 }

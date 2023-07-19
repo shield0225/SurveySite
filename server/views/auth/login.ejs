@@ -15,30 +15,31 @@
     <br>
     <div class="row">
       <div class="offset-md-4 col-md-4">
-        <br>
-        <h1>Please Login</h1>
-        <br>
+
         <form method="POST" autocomplete="off">
 
-          <fieldset class="form-group">
-            <label for="username"> Username: </label>
-            <input type="text" autocomplete="off" class="form-control" id="username" name="username" placeholder="Enter username" required autofocus>
-          </fieldset>
+          <div class="box">
+            <div>
+              <span class="text-center">Login</span>
+            </div>
+              <div class="input-container" style="margin-top: 50px;">
+                <input type="text" required autocomplete="off" id="username" name="username" />
+                <label for="username">username</label>		
+              </div>
 
-          <fieldset class="form-group">
-            <label for="password"> Password: </label>
-            <input type="password" autocomplete="off" class="form-control" id="password" name="password" placeholder="Enter passsword" required>
-          </fieldset>
-            or
-          <a href="/register"> Register Here </a>
-          <br>
-          <fieldset class="form-group">
-            <br>
-            <input type="submit" class="btn btn-dark" value="Login">
-            <a href="/">
-              <input type="button" class="btn btn-secondary" value="Cancel">
-            </a>
-          </fieldset>
+              <div class="input-container">		
+                <input type="password" required autocomplete="off" id="password" name="password" />
+                <label for="password">password</label>
+              </div>
+                or
+              <a href="/register"> Register Here </a>
+              <br>
+                <input type="submit" class="btn btn-dark" value="Login">
+                <a href="/">
+                  <input type="button" class="btn btn-secondary" value="Cancel">
+                </a>
+          </div>
+
         </form> 
       </div>
     </div>

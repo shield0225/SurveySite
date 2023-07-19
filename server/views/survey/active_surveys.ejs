@@ -2,44 +2,58 @@
 <%- include ('../partials/main_nav.ejs') %>
 
 <!--Main Navigation-->
-<!-- about section starts -->
 
 <!-- Active Surveys Section -->
+<h1 class="offset-md-1"><%= title %></h1>
 <main class="container">
+    <div class="offset-md-4 col-md-3 text-center">
+        <!-- Message Area -->
+        <% if (successMessage && successMessage.length > 0) { %>
+            <div class="alert alert-success alert-message">
+              <%= successMessage %>
+            </div>
+          <% } %>
+          
+          <% if (errorMessage && errorMessage.length > 0) { %>
+            <div class="alert alert-danger alert-message">
+              <%= errorMessage %>
+            </div>
+          <% } %>
+  </div>
     <div class="offset-md-1 col-md-10">
-        <br>
-        <h1><%= title %></h1>
-        <br>
-        <table class="active-surveys">
+      <div class="allsurvey-box scrollbar" id="scrollbar1">  
+        <table class="active-surveys flex-wrap">
             <thead>
                 <tr>
-                    <th class="col-2">Author</th>
-                    <th class="col-3">Survey Name</th>
-                    <th class="col-2">Start Date</th>
-                    <th class="col-2">Closing Date</th>
-                    <th class="text-center col-1"> View Questions </th>
-                    <th class="text-center col-3"> Actions </th>
-                        
+                    <th class="col-1 custom-col-width">Author</th>
+                    <th class="col-3 custom-col-width">Survey Name</th>
+                    <th class="text-center col-1 custom-col-width">Type</th>
+                    <th class="text-center col-1 custom-col-width">Start Date</th>
+                    <th class="text-center col-1 custom-col-width">End Date</th>
+                    <th class="text-center col-2 custom-col-width"> View Questions </th>
+                    <th class="text-center col-3 custom-col-width"> Actions </th>
                 </tr>
             </thead>
 
             <tbody>
-            <% for(let count = 0; count < surveyList.length; count++) { %>
+            <% surveyList.forEach(survey => { %>
                 <tr>
-                    <td class="col-2"><%= surveyList[count].author %></td>
-                    <td class="col-3"><%= surveyList[count].surveyName %></td>
-                    <td class="col-2"><%= surveyList[count].startDate %></td>
-                    <td class="col-2"><%= surveyList[count].closeDate %></td>
-                    <td class="text-center col-1"><a class="survey-button" href="<%= surveyList[count]._id %>">View</a></td>
-                    <td class="text-center col-3">
-                        <a class="survey-button" href="edit/<%= surveyList[count]._id %>"><button class="btn btn-light btn-sm"><i class="fa-solid fa-pencil"></i></button></a>
-                        <a class="survey-button" href="delete/<%= surveyList[count]._id %>"><button class="btn btn-danger btn-sm"><i class="fa-solid fa-trash"></i></button></a>
+                    <td class="col-1 custom-col-width"><%= survey.author %></td>
+                    <td class="col-3 custom-col-width"><%= survey.surveyName %></td>
+                    <td class="text-center col-1 custom-col-width"><%= survey.surveyType %></td>
+                    <td class="text-center col-1 custom-col-width"><%= survey.startDate %></td>
+                    <td class="text-center col-1 custom-col-width"><%= survey.endDate %></td>
+                    <td class="text-center col-2 custom-col-width"><a class="survey-button" href="/view/<%= survey._id %>">View</a></td>
+                    <td class="text-center col-3 custom-col-width">
+                        <a class="survey-button" href="/survey/update/<%= survey._id %>"><button class="btn btn-light btn-sm"><i class="fa-solid fa-pencil"></i></button></a>
+                        <a class="survey-button" href="delete/<%= survey._id %>"><button class="btn btn-danger btn-sm"><i class="fa-solid fa-trash"></i></button></a>
                     </td>
                 </tr>
-            <% } %>
+                <% }) %>
             </tbody>
 
         </table>
+      </div>
     </div>
 </main>
 

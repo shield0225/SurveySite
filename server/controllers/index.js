@@ -37,7 +37,7 @@ module.exports.displayLoginPage = (req, res, next) => {
     }
     else
     {
-        return res.redirect('survey/active_surveys');
+        return res.redirect('/');
     }   
 }
 
@@ -107,18 +107,22 @@ module.exports.displayRegisterPage = (req, res, next) => {
 }
 
 module.exports.processRegisterPage = (req, res, next) => {
-    // instantiate a user object
-    let newUser = new User({
+    // Instantiate a user object with the form data
+    const { username, password, email, firstName, lastName } = req.body;
+
+    const newUser = new User({
         username: req.body.username,
-        //password: req.body.password
+        password: req.body.password,
         email: req.body.email,
         firstName: req.body.firstName,
         lastName: req.body.lastName
     });
 
-    User.register(newUser, req.body.password,(err) => {
+    // Register the new user with User.register()
+    User.register(newUser, password,(err) => {
         if(err)
         {
+            // Handle registration errors
             console.log("Error: Inserting New User");
             if(err.name =="UserExistsError")
             {
@@ -138,16 +142,16 @@ module.exports.processRegisterPage = (req, res, next) => {
         }
         else
         {
-            // if no error exists, then registration is successful
+            //if no error exists, then registration is successful
 
-            /* TODO - Getting Ready to convert to API
+            // TODO - Getting Ready to convert to API
             // redirect the user and authenticate them
-            res.json({success: true, msg: 'User Registered Successfully!'});
-            */
+            //res.json({success: true, msg: 'User Registered Successfully!'});
+            
 
-            return passport.authenticate('local')(req, res, () => {
-                res.redirect('/contacts/list')
-            });
+            //return passport.authenticate('local')(req, res, () => {
+                res.redirect('/login');
+            //});
         }
     });
 }
@@ -157,7 +161,7 @@ module.exports.performLogout = (req, res, next) => {
         if (err) { return next(err); }
         res.redirect('/login');
     });
-};
+}
 
 module.exports.displayUsersPage = (req, res, next) => {
     User.find().exec()

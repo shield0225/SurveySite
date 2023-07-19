@@ -113,9 +113,16 @@ app.use('/users', usersRouter);
 app.use('/survey', surveyRouter);
 
 app.post ("/login", passport.authenticate('local', {
-  successRedirect: "/survey/active_surveys",
+  successRedirect: "/",
   failureRedirect: "/login",
 }));
+
+// Middleware to pass flash messages to the view
+app.use((req, res, next) => {
+  res.locals.successMessage = req.flash('success');
+  res.locals.errorMessage = req.flash('error');
+  next();
+});
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {

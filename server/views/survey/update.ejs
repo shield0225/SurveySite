@@ -1,0 +1,71 @@
+<%- include ('../partials/header.ejs') %>
+<%- include ('../partials/main_nav.ejs') %>
+  <!--Main Navigation-->
+
+<!-- Edit Survey Section -->
+<main>
+    <form method="POST" autocomplete="off">
+        <div class="create-box scrollbar2" id="scrollbar1">
+          <div class="text-center">
+            <h3><span>Edit Survey</span></h3>
+          </div>
+                <div class="input-container">		
+                    <input type="surveyName" required autocomplete="off" id="surveyName" name="surveyName" value="<%= survey.surveyName %>"/>
+                    <label for="surveyName">Survey Name</label>
+                  </div>
+
+                  <div class="input-container">		
+                    <input type="surveyType" required autocomplete="off" id="surveyType" name="surveyType" value="<%= survey.surveyType %>"/>
+                    <label for="surveyType">Survey Type</label>
+                  </div>
+    
+                <div class="input-container">		
+                  <input type="startDate" required autocomplete="off" id="startDate" name="startDate" value="<%= survey.startDate %>"/>
+                  <label for="startDate">Start Date</label>
+                </div>
+    
+                <div class="input-container">		
+                  <input type="endDate" required autocomplete="off" id="endDate" name="endDate" value="<%= survey.endDate %>"/>
+                  <label for="endDate">End Date</label>
+                </div>
+
+                <h8 class="h8">Questions</h8>
+                <div class="survey-questions">
+                    <div class="input-container">		
+                        <input type="text" autocomplete="off" id="questions" name="questions" value="<%= survey.questions[0] %>"/>
+                        <label for="questions">Question 1</label>
+                    </div>
+            
+                    <div class="input-container">		
+                        <input type="text" autocomplete="off" id="questions" name="questions" value="<%= survey.questions[1] %>"/>
+                        <label for="questions">Question 2</label>
+                    </div>
+            
+                    <div class="input-container">		
+                        <input type="text" autocomplete="off" id="questions" name="questions" value="<%= survey.questions[2] %>"/>
+                        <label for="questions">Question 3</label>
+                    </div>
+            
+                    <div class="input-container">		
+                        <input type="text" autocomplete="off" id="questions" name="questions" value="<%= survey.questions[3] %>"/>
+                        <label for="questions">Question 4</label>
+                    </div>
+            
+                    <div class="input-container">		
+                        <input type="text" autocomplete="off" id="questions" name="questions" value="<%= survey.questions[4] %>"/>
+                        <label for="questions">Question 5</label>
+                    </div>
+                </div>
+                <div class="text-center">
+                  <button class="btn submit" type="submit">Submit</button>
+                  <a href="/survey/active_surveys" class="cancel btn">Cancel</a>
+                </div>
+              </div>
+        </div>
+    </form>
+</main>
+
+
+   <!--Script section -->
+<%- include ('../partials/bottom_nav.ejs') %>
+<%- include ('../partials/footer.ejs') %>

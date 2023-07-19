@@ -10,7 +10,7 @@ let surveyModel = mongoose.Schema({
     author: String,
     surveyName: String,
     startDate: String,
-    closeDate: String,
+    endDate: String,
     surveyType: String,
     questions: Array,
 },

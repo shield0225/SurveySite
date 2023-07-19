@@ -12,8 +12,8 @@
 
       <div class="navbar-right" id="navbarSupportedContent">
         <ul class="navbar-nav">
-          <% if (title === "Active Surveys" || title === "/") { %>
-            <a href="create-survey">
+          <% if (title === "Active Surveys") { %>
+            <a href="/survey/create">
               <button class='glowing-btn'><span class='glowing-txt'>C<span class='faulty-letter'>R</span>EAT<span class='faulty-letter'>E</span></span></button>
             </a>
             <% } else { %>
@@ -25,11 +25,10 @@
           </li>
 
           <% if (title === "Home" || title === "/") { %>
-            <li class="nav-item active">
           <% } else { %>
-            <li class="nav-item">
+            <a class="nav-link nav-item" aria-current="page" href="/home"><i class="fa-solid fa-house-fire"></i> Home </a>
           <% } %>
-            <a class="nav-link" aria-current="page" href="/home"><i class="fa-solid fa-house-fire"></i> Home </a>
+            
           </li>
 
           <% if(typeof firstName == 'string' && firstName) { %>
