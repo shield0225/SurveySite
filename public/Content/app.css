@@ -8,9 +8,27 @@ StudentID: 301308843
 
 body {
   background-image: url("/Assets/images/background.png");
-  background-repeat: repeat;
+  background-repeat: no-repeat;
   background-size: cover;
   color: white;
+}
+
+.homelogo-container {
+  display: flex;
+  justify-content: center;
+  position: relative;
+  align-items: center;
+  width: 100%;
+  height: 0;
+}
+
+.homelogo {
+  position: absolute;
+  top: 0;
+  left: 50;
+  width: 80%;
+  height: auto;
+  object-fit: cover;
 }
 
 .title-pink {
@@ -433,7 +451,7 @@ body {
 .create-box {
 	position:absolute;
 	left:50%;
-	top:50%;
+	top:52%;
 	transform: translate(-50%,-50%);
     background-color: black;
 	border-radius:3px;

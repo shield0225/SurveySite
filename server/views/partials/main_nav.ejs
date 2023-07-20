@@ -51,8 +51,11 @@
             <li class="nav-item"><a href="/logout" class="nav-link">
               <i class="fas fa-lg fa-sign-out-alt"></i> Logout</a></li>
           <% } else { %>
+            <% if (title === "Login" || title === "Active Surveys") { %>
+              <% } else { %>
             <li class="nav-item"><a href="/login" class="nav-link">
               <i class="fas fa-lg fa-sign-in-alt"></i> Login</a></li>
+              <% } %>
           <% } %>
         </ul> 
       </div>

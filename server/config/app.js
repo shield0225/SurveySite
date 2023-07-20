@@ -113,7 +113,7 @@ app.use('/users', usersRouter);
 app.use('/survey', surveyRouter);
 
 app.post ("/login", passport.authenticate('local', {
-  successRedirect: "/",
+  successRedirect: "/survey/active_surveys",
   failureRedirect: "/login",
 }));
 
