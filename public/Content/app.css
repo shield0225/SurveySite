@@ -13,6 +13,10 @@ body {
   color: white;
 }
 
+.title-pink {
+  color: rgb(174, 65, 112)
+}
+
 .h8 {
   font-size: 1.7rem; 
   position: relative;
@@ -129,7 +133,8 @@ body {
   text-align: center;
 }
 
-/* glowing button - CREATE */
+/* glowing CREATE button */
+
 @import url("https://fonts.googleapis.com/css?family=Raleway");
 
 :root {
@@ -349,7 +354,7 @@ body {
     background-color: black;
 	border-radius:3px;
 	padding:50px 80px;
-  opacity: 90%;
+  opacity: 100%;
 }
 .input-container{
 	position:relative;
@@ -411,7 +416,7 @@ body {
 .allsurvey-box{
 	position:absolute;
 	left:50%;
-	top:65%;
+	top:55%;
 	transform: translate(-50%,-50%);
     background-color: black;
 	border-radius:3px;
@@ -425,7 +430,7 @@ body {
   background-color: black;
 }
 
-.create-box{
+.create-box {
 	position:absolute;
 	left:50%;
 	top:50%;

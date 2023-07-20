@@ -4,14 +4,6 @@
 <!-- Login Form -->
 
 <main class="container">
-  <div class="offset-md-4 col-md-4 text-center">
-        <!-- Message Area -->
-      <% if (message && message.length > 0) { %>
-        <div class="alert alert-danger">
-            <%= message %>
-        </div>
-        <% } %>
-  </div>
     <br>
     <div class="row">
       <div class="offset-md-4 col-md-4">
@@ -19,8 +11,8 @@
         <form method="POST" autocomplete="off">
 
           <div class="box">
-            <div>
-              <span class="text-center">Login</span>
+            <div class="title-pink">
+              <span class="text-center"><%= title %></span>
             </div>
               <div class="input-container" style="margin-top: 50px;">
                 <input type="text" required autocomplete="off" id="username" name="username" />
@@ -31,6 +23,10 @@
                 <input type="password" required autocomplete="off" id="password" name="password" />
                 <label for="password">password</label>
               </div>
+              <br>
+              <span>use id: admin, pw: 1234</span>  
+              <br>
+              <br>
                 or
               <a href="/register"> Register Here </a>
               <br>

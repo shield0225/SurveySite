@@ -6,20 +6,6 @@
 <!-- Active Surveys Section -->
 <h1 class="offset-md-1"><%= title %></h1>
 <main class="container">
-    <div class="offset-md-4 col-md-3 text-center">
-        <!-- Message Area -->
-        <% if (successMessage && successMessage.length > 0) { %>
-            <div class="alert alert-success alert-message">
-              <%= successMessage %>
-            </div>
-          <% } %>
-          
-          <% if (errorMessage && errorMessage.length > 0) { %>
-            <div class="alert alert-danger alert-message">
-              <%= errorMessage %>
-            </div>
-          <% } %>
-  </div>
     <div class="offset-md-1 col-md-10">
       <div class="allsurvey-box scrollbar" id="scrollbar1">  
         <table class="active-surveys flex-wrap">

@@ -10,6 +10,21 @@
       <span class="navbar-toggler-icon"></span>
     </button>
 
+    <div class="offset-md-4 col-md-2 text-center">
+      <!-- Message Area -->
+      <% if (successMessage && successMessage.length > 0) { %>
+          <div class="alert alert-success alert-message">
+            <%= successMessage %>
+          </div>
+        <% } %>
+        
+        <% if (errorMessage && errorMessage.length > 0) { %>
+          <div class="alert alert-danger alert-message">
+            <%= errorMessage %>
+          </div>
+        <% } %>
+    </div>
+
       <div class="navbar-right" id="navbarSupportedContent">
         <ul class="navbar-nav">
           <% if (title === "Active Surveys") { %>

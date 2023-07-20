@@ -30,7 +30,6 @@ module.exports.displayCreateSurveyPage = (req, res, next) => {
 }
 
 module.exports.processCreateSurveyPage = (req, res, next) => {
-    const message = req.query?.message;
     
     let { author, surveyName, surveyType, startDate, endDate, questions } = req.body;
     author = req.user.firstName + ' ' + req.user.lastName;
@@ -48,22 +47,20 @@ module.exports.processCreateSurveyPage = (req, res, next) => {
     // Save the new survey to the database
     newSurvey.save()
       .then(savedContact => {
-        console.log(message)
-        req.flash('success', 'Survey added successfully');
+        req.flash('success', 'Survey created successfully');
         // Redirect to the surveys list or show a success message
         res.redirect('/survey/active_surveys');
-        message = 'Survey created successfully';
-        
       })
       .catch(error => {
         console.error(error);
-        req.flash('error', 'Error adding survey');
+        req.flash('error', 'Error adding new survey');
         next(error);
       });
 };
 
 module.exports.displayEditSurveyPage = (req, res, next) => {
-  const message = req.query?.message;
+  const successMessage = req.flash('success');
+  const errorMessage = req.flash('error');
 
   // Retrieve the survey from the database based on the provided ID
     Survey.findById(req.params.id)
@@ -73,7 +70,7 @@ module.exports.displayEditSurveyPage = (req, res, next) => {
       res.status(404).send('Survey not found');
       } else {
         // show the edit view
-        res.render('survey/update', { title: 'Update Survey', survey: survey, message, 
+        res.render('survey/update', { title: 'Update Survey', survey, successMessage, errorMessage, 
         firstName: req.user ? req.user.firstName : '' });
     }
   })
@@ -101,11 +98,9 @@ module.exports.processEditSurveyPage = async (req, res, next) => {
     await Survey.findByIdAndUpdate((req.params.id), updatedSurvey);
       req.flash('success', 'Survey updated successfully');
       res.redirect('/survey/active_surveys');
-    //res.redirect('/survey/active_surveys?status=success&message=Survey updated successfully');
   } catch (error) {
     console.error(error);
     req.flash('error', 'Error updating survey');
-    //res.redirect(`/survey/update/${id}?message=${error.message}`);
   }
 }
 
@@ -122,6 +117,6 @@ module.exports.processEditSurveyPage = async (req, res, next) => {
     } catch (error) {
       console.error(error); 
       req.flash('error', 'Error deleting survey');
-      res.redirect(`/survey/active_surveys/?message=${error.message}`);
+      res.redirect(`/survey/active_surveys`);
     }
 }  

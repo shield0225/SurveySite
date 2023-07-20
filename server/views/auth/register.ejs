@@ -3,20 +3,10 @@
 
 <!-- Login Form -->
 <main class="container">
-          <div class="offset-md-4 col-md-4 text-center">
-              <!-- Message Area -->
-            <% if (message.length > 0) { %>
-              <div class="alert alert-danger">
-                  <%= message %>
-              </div>
-              <% } %>
-          </div>
-          <br>
-
         <form method="POST" autocomplete="off">
           <div class="box">
-            <div>
-              <span class="text-center">Please Register</span>
+            <div class="title-pink">
+              <span class="text-center"><%= title %></span>
             </div>
               <div class="input-container" style="margin-top: 50px;">
                 <input type="text" required autocomplete="off"/>
@@ -51,9 +41,6 @@
           </div>
           
         </form>
-        <br>
-      </div>
-    </div>
   </main>
   
 <%- include ('../partials/bottom_nav.ejs') %>

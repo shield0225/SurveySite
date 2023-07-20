@@ -17,7 +17,9 @@ let userModel = require('../models/user');
 let User = userModel.User; // alias
 
 module.exports.displayHomePage = (req, res, next) => {
-    res.render('index', {title: 'Home', firstName: req.user ? req.user.firstName : ''});
+    const successMessage = req.flash('success');
+    const errorMessage = req.flash('error');
+    res.render('index', {title: 'Home', firstName: req.user ? req.user.firstName : '', successMessage, errorMessage});
 }
 
 module.exports.displayAboutPage = (req, res, next) => {
@@ -30,7 +32,8 @@ module.exports.displayLoginPage = (req, res, next) => {
         res.render('auth/login', 
         {
             title: 'Login',
-            message: req.flash('loginMessage'),
+            successMessage: req.flash('successMessage'),
+            errorMessage: req.flash('errorMessage'),
             firstName: req.user ? req.user.firstName : '',
             lastName: req.user ? req.user.lastName : ''
         })
@@ -95,7 +98,8 @@ module.exports.displayRegisterPage = (req, res, next) => {
         res.render('auth/register',
         {
             title: 'Register',
-            message: req.flash('registerMessage'),
+            successMessage: req.flash('successMessage'),
+            errorMessage: req.flash('errorMessage'),
             firstName: req.user ? req.user.firstName : '',
             lastName: req.user ? req.user.lastName : ''
         });
@@ -107,6 +111,8 @@ module.exports.displayRegisterPage = (req, res, next) => {
 }
 
 module.exports.processRegisterPage = (req, res, next) => {
+    const successMessage = req.flash('success');
+    const errorMessage = req.flash('registerMessage');
     // Instantiate a user object with the form data
     const { username, password, email, firstName, lastName } = req.body;
 
@@ -120,25 +126,28 @@ module.exports.processRegisterPage = (req, res, next) => {
 
     // Register the new user with User.register()
     User.register(newUser, password,(err) => {
+        const successMessage = req.flash('success');
+        const errorMessage = req.flash('registerMessage');
         if(err)
         {
             // Handle registration errors
             console.log("Error: Inserting New User");
             if(err.name =="UserExistsError")
             {
-                req.flash(
-                    'registerMessage',
-                    'Registration Error: User Already Exists!'
-                );
+                req.flash( 'registerMessage', 'Registration Error: User Already Exists!');
                 console.log('Error: User Already Exists!')
             }
+            req.flash('error', 'Error occurred during registration');
             return res.render('auth/register',
-            {
-                title: 'Register',
-                message: req.flash('registerMessage'),
-                firstName: req.user ? req.user.firstName : '',
-                lastName: req.user ? req.user.lastName : '',
-            });
+                {
+                    title: 'Register',
+                    successMessage: req.flash('registerMessage'),
+                    errorMessage: req.flash('registerMessage'),
+                    firstName: req.user ? req.user.firstName : '',
+                    lastName: req.user ? req.user.lastName : '',
+                    
+                });
+                
         }
         else
         {
@@ -148,8 +157,8 @@ module.exports.processRegisterPage = (req, res, next) => {
             // redirect the user and authenticate them
             //res.json({success: true, msg: 'User Registered Successfully!'});
             
-
             //return passport.authenticate('local')(req, res, () => {
+                req.flash('success', 'Registration successful');
                 res.redirect('/login');
             //});
         }
@@ -164,11 +173,14 @@ module.exports.performLogout = (req, res, next) => {
 }
 
 module.exports.displayUsersPage = (req, res, next) => {
+    const successMessage = req.flash('success');
+    const errorMessage = req.flash('error');
     User.find().exec()
       .then((userList) => {
-        res.render('users', { title: 'Users', userList });
+        res.render('users', { title: 'Users', userList, successMessage, errorMessage });
       })
       .catch((err) => {
+        req.flash('error', 'Error loading users');
         console.error(err);
         next(err);
       });

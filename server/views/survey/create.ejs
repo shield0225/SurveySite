@@ -2,27 +2,12 @@
 <%- include ('../partials/main_nav.ejs') %>
   <!--Main Navigation-->
 
-    <div class="offset-md-4 col-md-3 text-center">
-    <!-- Message Area -->
-        <% if (successMessage && successMessage.length > 0) { %>
-            <div class="alert alert-success alert-message">
-            <%= successMessage %>
-            </div>
-        <% } %>
-        
-        <% if (errorMessage && errorMessage.length > 0) { %>
-            <div class="alert alert-danger alert-message">
-            <%= errorMessage %>
-            </div>
-        <% } %>
-    </div>
-
   <!-- Create Survey Section -->
 <main>
 
     <form method="POST" autocomplete="off">
         <div class="create-box scrollbar2" id="scrollbar1">
-          <div class="text-center">
+          <div class="text-center title-pink">
             <h3 class="offset-md-1"><span><%= title %></span></h3>
           </div>
 
