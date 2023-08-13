@@ -14,9 +14,6 @@ router.get('/', indexController.displayHomePage);
 /* GET home page. */
 router.get('/home', indexController.displayHomePage);
 
-/* GET About Me page. */
-//router.get('/about', indexController.displayAboutPage);
-
 /* GET Route for the User List page - READ Operation */
 router.get('/users', indexController.displayUsersPage);
 
