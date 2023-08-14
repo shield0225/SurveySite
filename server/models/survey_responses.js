@@ -15,7 +15,11 @@ let surveyResponsesModel = mongoose.Schema({
     a2: String,
     a3: String,
     a4: String,
-    a5: String    
+    a5: String,
+    completionDate: {
+        type: Date,
+        default: Date.now
+    }
 },
     {
     collection: "survey_responses"

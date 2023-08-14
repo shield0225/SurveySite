@@ -42,13 +42,22 @@ router.get('/update/:id', requireAuth, surveyController.displayEditSurveyPage);
 // Post Route for Update survey page - UPDATE Operation */
 router.post('/update/:id', requireAuth, surveyController.processEditSurveyPage);
 
+// GET Route to perform Deletion - DELETE Operation */ 
+router.get('/delete/:id', requireAuth, surveyController.deleteSurveyPage);
+
 // Get Route for answer survey page - PREVIEW Operation */
 router.get('/view_survey/:id', requireAuth, surveyController.displayAnswerSurveyPage);
 
 // Post Route for read survey page - ANSWER Operation */
 router.post('/view_survey/:id', requireAuth, surveyController.processAnswerSurveyPage);
 
-// GET Route to perform Deletion - DELETE Operation */ 
-router.get('/delete/:id', requireAuth, surveyController.deleteSurveyPage);
+// Get Route for answer survey page - PREVIEW Operation */
+router.get('/answered_surveys', requireAuth, surveyController.listParticipantSurveys);
+
+// GET Route to perform Deletion of Answered Survey - DELETE Operation */
+router.get('/delete_answered/:id', requireAuth, surveyController.deleteAnsweredSurvey);
+
+
+
 
 module.exports = router;

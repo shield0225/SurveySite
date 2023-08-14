@@ -158,7 +158,8 @@ module.exports.processAnswerSurveyPage = async (req, res, next) => {
       a2: req.body.a2,
       a3: req.body.a3,
       a4: req.body.a4,
-      a5: req.body.a5
+      a5: req.body.a5,
+      completionDate: new Date()
   });
   console.log(answeredSurvey);
   // Save the new survey to the database
@@ -174,3 +175,45 @@ module.exports.processAnswerSurveyPage = async (req, res, next) => {
          next(error);
      });
 }
+
+module.exports.listParticipantSurveys = async (req, res, next) => {
+  const successMessage = req.flash('success');
+  const errorMessage = req.flash('error');
+  try {
+    const participant = req.user.firstName + ' ' + req.user.lastName; // Get the participant's name
+    
+
+    // Find all survey responses for the participant
+    const participantSurveys = await SurveyResponses.find({ participant }).exec()
+      
+    res.render('survey/answered_surveys', {
+      title: 'My Answered Surveys',
+      participantSurveys,
+      successMessage: req.flash('successMessage'),
+      errorMessage: req.flash('errorMessage'),
+      firstName: req.user.firstName,
+      lastName: req.user.lastName
+    });
+  } catch (error) {
+    console.error(error);
+    req.flash('error', 'Error fetching participant surveys');
+    next(error);
+  }
+};
+
+module.exports.deleteAnsweredSurvey = async (req, res, next) => {
+  console.log(req.query)
+  const message = req.query && req.query.message;
+  const id = req.params.id;
+  try {
+    await SurveyResponses.deleteOne({_id: id});
+    req.flash('success', 'Answered survey deleted successfully');
+    // refresh the Contacts
+      console.log(message);
+    res.redirect('/survey/answered_surveys');
+  } catch (error) {
+    console.error(error); 
+    req.flash('error', 'Error deleting survey');
+    res.redirect(`/survey/answered_surveys`);
+  }
+}  

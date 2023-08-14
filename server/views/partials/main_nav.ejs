@@ -25,7 +25,7 @@
         <% } %>
     </div>
 
-      <div class="navbar-right" id="navbarSupportedContent">
+      <div class="navbar-left" id="navbarSupportedContent">
         <ul class="navbar-nav">
           <% if (title === "Active Surveys") { %>
             <a href="/survey/create">
@@ -47,9 +47,20 @@
           </li>
 
           <% if(typeof firstName == 'string' && firstName) { %>
-            <li class="navbar-text"><i class="fas fa-lg fa-user"></i> Welcome, <%= firstName+' '+lastName %></li>
-            <li class="nav-item"><a href="/logout" class="nav-link">
-              <i class="fas fa-lg fa-sign-out-alt"></i> Logout</a></li>
+            <li class="nav-item dropdown">
+              <a class="nav-link dropdown-toggle text-white" href="#" role="button" id="answeredSurveysDropdown"
+                data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                <i class="fas fa-lg fa-user"></i> Welcome, <%= firstName + ' ' + lastName + '  ' %>
+              </a>
+              <div class="dropdown-menu" aria-labelledby="answeredSurveysDropdown">
+                <a class="dropdown-item answered-surveys-item" href="/survey/answered_surveys">
+                  <i class="fa-solid fa-clipboard-list text-white"></i> My Answered Surveys
+                </a>
+              </div>
+            </li>
+          <li class="nav-item"><a href="/logout" class="nav-link">
+              <i class="fa-solid fa-sign-out"></i> Logout</a>
+          </li>
           <% } else { %>
             <% if (title === "Login" || title === "Active Surveys") { %>
               <% } else { %>

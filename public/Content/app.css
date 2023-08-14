@@ -88,6 +88,11 @@ body {
   text-align: right;
 }
 
+.navbar-left {
+  flex: 0 0 auto;
+  text-align: left;
+}
+
 /* HERO Button - Active Surveys - Start */
 .button {
   background-color: rgb(174, 65, 112);
@@ -126,6 +131,22 @@ body {
   /* Add any additional hover styles */
 }
 /* HERO Button - Active Surveys - End */
+
+.dropdown-menu {
+  background-color: transparent; 
+  border: none; 
+  box-shadow: none; 
+}
+
+.dropdown-menu .answered-surveys-item {
+  background-color: #343a40; 
+  color: white; 
+}
+
+.dropdown-menu .answered-surveys-item:hover {
+  background-color: #2c3136; 
+  color: rgb(174, 65, 112);
+}
 
 .home,
 .about,

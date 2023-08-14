@@ -1,0 +1,45 @@
+<%- include ('../partials/header.ejs') %>
+<%- include ('../partials/main_nav.ejs') %>
+
+<!--Main Navigation-->
+
+<!-- Answered Surveys Section -->
+<h1 class="offset-md-1 mb-3"><%= title %></h1>
+<main class="container">
+    <div class="offset-md-1 col-md-10">
+      <div class="allsurvey-box scrollbar" id="scrollbar1">  
+        <table class="active-surveys flex-wrap">
+            <thead class="fixed-header">
+                <tr class="th">
+                    <th class="col-1 custom-col-width">Participant</th>
+                    <th class="col-3 custom-col-width">Survey Name</th>
+                    <th class="text-center col-1 custom-col-width">Type</th>
+                    <th class="text-center col-1 custom-col-width">Completion Date</th>
+                    <th class="text-center col-5 custom-col-width"> Delete </th>
+                </tr>
+            </thead>
+
+            <tbody>
+            <% participantSurveys.forEach(surveyresponses => { %>
+                <tr class="td">
+                    <td class="col-1 custom-col-width"><%= surveyresponses.participant %></td>
+                    <td class="col-3 custom-col-width"><%= surveyresponses.surveyName %></td>
+                    <td class="text-center col-1 custom-col-width"><%= surveyresponses.surveyType %></td>
+                    <td class="text-center col-1 custom-col-width"><%= surveyresponses.completionDate %></td>
+                    <td class="text-center col-3 custom-col-width">
+                        <a class="survey-button" href="delete_answered/<%= surveyresponses._id %>"><button class="btn btn-danger btn-sm"><i class="fa-solid fa-trash"></i></button></a>
+                    </td>
+                </tr>
+                <% }) %>
+            </tbody>
+
+        </table>
+      </div>
+    </div>
+</main>
+
+<!-- about section ends -->
+
+  <!--Script section -->
+<%- include ('../partials/bottom_nav.ejs') %>
+<%- include ('../partials/footer.ejs') %>
