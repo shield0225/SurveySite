@@ -130,7 +130,8 @@ body {
 .home,
 .about,
 .login,
-.update {
+.update
+.preview {
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -407,6 +408,48 @@ body {
  outline:none;
  border-bottom:1px solid #e74c3c;	
 }
+
+.input-container1 {
+  position: relative;
+  margin: 0 auto;
+  text-align: center;
+  width: 90%;
+}
+
+.input-container1 input{ 
+  border:0;
+  border-bottom:1px solid #555;  
+  background:transparent;
+  width:100%;
+  padding:8px 0 5px 0;
+  font-size:16px;
+  color:#fff;
+  text-align: center;
+}
+
+.input-container1 input[type="text"]:read-only {
+  width: 100%;
+  padding: 10px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  box-sizing: border-box;
+  font-size: 16px;
+  background-color: #f8f8f8;
+  text-align: center;
+}
+
+.input-container1 label {
+  position: absolute;
+  top: 0;
+  left: 0;
+  padding: 10px;
+  font-size: 16px;
+  pointer-events: none;
+  transition: all 0.3s;
+  color: #888;
+}
+
+
 .btn{
 	color:#fff;
 	background-color:rgb(174, 65, 112);
@@ -526,3 +569,4 @@ body {
   background-color: black;
 }
 /* Table Formatting End */
+

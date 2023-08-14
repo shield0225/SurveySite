@@ -10,8 +10,9 @@ let mongoose = require('mongoose');
 let passport = require('passport');
 //let jwt = require('jsonwebtoken');
 
-// connect to Contacts Model
+// connect to Survey Model
 let Survey = require('../models/survey');
+let SurveyResponses = require('../models/survey_responses');
 
 // helper function for guard purposes
 function requireAuth(req, res, next)
@@ -40,6 +41,12 @@ router.get('/update/:id', requireAuth, surveyController.displayEditSurveyPage);
 
 // Post Route for Update survey page - UPDATE Operation */
 router.post('/update/:id', requireAuth, surveyController.processEditSurveyPage);
+
+// Get Route for answer survey page - PREVIEW Operation */
+router.get('/view_survey/:id', requireAuth, surveyController.displayAnswerSurveyPage);
+
+// Post Route for read survey page - ANSWER Operation */
+router.post('/view_survey/:id', requireAuth, surveyController.processAnswerSurveyPage);
 
 // GET Route to perform Deletion - DELETE Operation */ 
 router.get('/delete/:id', requireAuth, surveyController.deleteSurveyPage);

@@ -9,6 +9,7 @@ let mongoose = require('mongoose');
 
 // create a reference to the model
 let Survey = require('../models/survey');
+let SurveyResponses = require('../models/survey_responses');
 
 module.exports.displayActiveSurveysPage = (req, res, next) => {
   const successMessage = req.flash('success');
@@ -120,3 +121,56 @@ module.exports.processEditSurveyPage = async (req, res, next) => {
       res.redirect(`/survey/active_surveys`);
     }
 }  
+
+module.exports.displayAnswerSurveyPage = (req, res, next) => {
+  // Retrieve the survey from the database based on the provided ID
+    Survey.findById(req.params.id)
+      .then(survey => {
+            res.render('survey/view_survey', 
+              { title: 'Answer Survey', 
+                survey, 
+                successMessage: req.flash('successMessage'),
+                errorMessage: req.flash('errorMessage'),
+                firstName: req.user ? req.user.firstName : '',
+                lastName: req.user ? req.user.lastName : ''
+              });
+    }
+  )
+  .catch(error => {
+    console.error(error);
+    next(error);
+  });
+}
+
+module.exports.processAnswerSurveyPage = async (req, res, next) => {
+
+  let { surveyName, surveyType, startDate, endDate, a1, a2, a3, a4, a5 } = req.body;
+    author = req.user.firstName + ' ' + req.user.lastName;
+    console.log(req.body);
+
+  const answeredSurvey = SurveyResponses({
+      participant: author,
+      surveyName: req.body.surveyName,
+      surveyType: req.body.surveyType,
+      startDate: req.body.startDate,
+      endDate: req.body.endDate,
+      a1: req.body.a1,
+      a2: req.body.a2,
+      a3: req.body.a3,
+      a4: req.body.a4,
+      a5: req.body.a5
+  });
+  console.log(answeredSurvey);
+  // Save the new survey to the database
+   await SurveyResponses.create(answeredSurvey)
+     .then(savedResponses => {
+         req.flash('success', 'Responses saved successfully');
+         // Redirect to the surveys list or show a success message
+         res.redirect('/survey/active_surveys');
+     })
+     .catch(error => {
+         console.error(error);
+         req.flash('error', 'Error saving responses');
+         next(error);
+     });
+}

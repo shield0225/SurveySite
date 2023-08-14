@@ -16,7 +16,7 @@
                     <th class="text-center col-1 custom-col-width">Type</th>
                     <th class="text-center col-1 custom-col-width">Start Date</th>
                     <th class="text-center col-1 custom-col-width">End Date</th>
-                    <th class="text-center col-2 custom-col-width"> View Questions </th>
+                    <th class="text-center col-2 custom-col-width"> Participate </th>
                     <th class="text-center col-3 custom-col-width"> Actions </th>
                 </tr>
             </thead>
@@ -29,7 +29,8 @@
                     <td class="text-center col-1 custom-col-width"><%= survey.surveyType %></td>
                     <td class="text-center col-1 custom-col-width"><%= survey.startDate %></td>
                     <td class="text-center col-1 custom-col-width"><%= survey.endDate %></td>
-                    <td class="text-center col-2 custom-col-width"><a class="survey-button" href="/view/<%= survey._id %>">View</a></td>
+                    <td class="text-center col-2 custom-col-width">
+                        <a class="survey-button" href="/survey/view_survey/<%= survey._id %>">Answer</a></td>
                     <td class="text-center col-3 custom-col-width">
                         <a class="survey-button" href="/survey/update/<%= survey._id %>"><button class="btn btn-light btn-sm"><i class="fa-solid fa-pencil"></i></button></a>
                         <a class="survey-button" href="delete/<%= survey._id %>"><button class="btn btn-danger btn-sm"><i class="fa-solid fa-trash"></i></button></a>
